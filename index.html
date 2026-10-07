@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayco Shopping | Shopping Made Simple</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f6f8;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: min(1180px, 92%);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            background: #e21b2d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 19px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 600;
+            color: #4b5563;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #e21b2d;
+        }
+
+        .nav-button {
+            background: #172033;
+            color: white !important;
+            padding: 11px 19px;
+            border-radius: 8px;
+        }
+
+        .nav-button:hover {
+            background: #e21b2d;
+        }
+
+        .menu-button {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 27px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 720px;
+            padding-top: 76px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(135deg, #fff 0%, #f6f7fa 55%, #eef0f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #e21b2d;
+            opacity: 0.06;
+            right: -150px;
+            top: 100px;
+        }
+
+        .hero-container {
+            width: min(1180px, 92%);
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: #fff0f1;
+            color: #c51628;
+            padding: 7px 13px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 6vw, 76px);
+            line-height: 1.02;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #e21b2d;
+        }
+
+        .hero p {
+            color: #606a7a;
+            font-size: 19px;
+            max-width: 590px;
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 9px;
+            font-weight: 700;
+            transition: 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .button-primary {
+            background: #e21b2d;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #bd1323;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            background: white;
+            color: #172033;
+            border: 1px solid #dfe3e9;
+        }
+
+        .button-secondary:hover {
+            border-color: #bfc5cf;
+            transform: translateY(-2px);
+        }
+
+        /* HERO CARD */
+
+        .hero-card {
+            background: white;
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 25px 70px rgba(20, 30, 50, 0.12);
+            position: relative;
+        }
+
+        .shopping-image {
+            height: 410px;
+            border-radius: 15px;
+            background:
+                linear-gradient(135deg, #172033, #303c53);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shopping-image::before,
+        .shopping-image::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            border: 70px solid rgba(255,255,255,0.04);
+        }
+
+        .shopping-image::before {
+            width: 250px;
+            height: 250px;
+            right: -100px;
+            top: -80px;
+        }
+
+        .shopping-image::after {
+            width: 180px;
+            height: 180px;
+            left: -80px;
+            bottom: -60px;
+        }
+
+        .fake-building {
+            width: 68%;
+            height: 70%;
+            background: white;
+            border-radius: 8px 8px 3px 3px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .building-sign {
+            position: absolute;
+            top: 28px;
+            left: 12%;
+            width: 76%;
+            height: 55px;
+            background: #e21b2d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 21px;
+            font-weight: 800;
+            border-radius: 5px;
+        }
+
+        .building-windows {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 9px;
+        }
+
+        .building-windows span {
+            height: 80px;
+            background: #dfe6ee;
+            border-radius: 3px;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        .section-heading {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .section-heading small {
+            color: #e21b2d;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+        }
+
+        .section-heading h2 {
+            font-size: 42px;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin: 9px 0 15px;
+        }
+
+        .section-heading p {
+            color: #687282;
+            font-size: 17px;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #687282;
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .about-card {
+            background: #f5f6f8;
+            padding: 35px;
+            border-radius: 18px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .about-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .about-list {
+            list-style: none;
+        }
+
+        .about-list li {
+            padding: 13px 0;
+            border-bottom: 1px solid #dde1e7;
+            display: flex;
+            justify-content: space-between;
+            color: #566071;
+        }
+
+        .about-list li:last-child {
+            border-bottom: none;
+        }
+
+        .about-list strong {
+            color: #172033;
+        }
+
+        /* STORES */
+
+        .stores {
+            background: #f5f6f8;
+        }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .store-card {
+            background: white;
+            border: 1px solid #e3e6eb;
+            border-radius: 16px;
+            padding: 28px;
+            transition: 0.25s;
+        }
+
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(20,30,50,0.08);
+        }
+
+        .store-icon {
+            width: 48px;
+            height: 48px;
+            background: #fff0f1;
+            color: #e21b2d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .store-card h3 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .store-card p {
+            color: #687282;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 12px;
+            padding: 5px 9px;
+            border-radius: 5px;
+            background: #edf8f1;
+            color: #24733e;
+            font-weight: 700;
+        }
+
+        .status.planned {
+            background: #fff5df;
+            color: #8a6418;
+        }
+
+        /* VALUES */
+
+        .values {
+            background: white;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .value-card {
+            padding: 30px;
+            border-left: 3px solid #e21b2d;
+            background: #fafafa;
+        }
+
+        .value-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .value-card p {
+            color: #687282;
+            font-size: 15px;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: #172033;
+            color: white;
+            text-align: center;
+        }
+
+        .cta .container {
+            max-width: 760px;
+        }
+
+        .cta h2 {
+            font-size: 44px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -1.5px;
+        }
+
+        .cta p {
+            color: #b9c0cc;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 55px 0 25px;
+        }
+
+        .footer-grid {
+            width: min(1100px, 92%);
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 45px;
+        }
+
+        .footer-brand p {
+            color: #9ca5b4;
+            max-width: 380px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 9px 0;
+            color: #9ca5b4;
+            font-size: 14px;
+        }
+
+        footer li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding-top: 22px;
+            border-top: 1px solid #293142;
+            color: #7f8999;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: white;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px 5%;
+                border-bottom: 1px solid #e5e7eb;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 140px 0 80px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .shopping-image {
+                height: 330px;
+            }
+
+            .about-grid,
+            .store-grid,
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .section-heading h2 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 48px;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .button {
+                text-align: center;
+                width: 100%;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .cta h2 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                <div class="logo-mark">W</div>
+                <span>Wayco</span>
+            </a>
+
+            <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About Us</a></li>
+                <li><a href="#stores" onclick="closeMenu()">Stores</a></li>
+                <li><a href="#values" onclick="closeMenu()">Our Values</a></li>
+                <li><a href="#contact" class="nav-button" onclick="closeMenu()">Visit Us</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero" id="home">
+
+        <div class="hero-container">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">WAYCO SHOPPING</span>
+
+                <h1>
+                    Shopping made
+                    <span>simple.</span>
+                </h1>
+
+                <p>
+                    Wayco Shopping brings together stores, services and
+                    experiences in one modern destination on Roblox.
+                    We're building a shopping environment designed for
+                    everyone.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#stores" class="button button-primary">
+                        Explore our stores
+                    </a>
+
+                    <a href="#about" class="button button-secondary">
+                        About Wayco
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="hero-card">
+
+                <div class="shopping-image">
+
+                    <div class="fake-building">
+
+                        <div class="building-sign">
+                            WAYCO
+                        </div>
+
+                        <div class="building-windows">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <small>About Wayco</small>
+
+                <h2>A new kind of shopping experience.</h2>
+
+                <p>
+                    Wayco Shopping is a Roblox-based shopping brand focused
+                    on creating realistic, enjoyable and accessible places
+                    for players to visit.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        Founded with the goal of creating something different,
+                        Wayco Shopping is developing a modern shopping
+                        environment where players can explore stores,
+                        interact with staff and spend time with friends.
+                    </p>
+
+                    <p>
+                        Following our move away from our previous single-store
+                        project, Wayco represents a new direction for the
+                        company. Rather than focusing on one brand, we're
+                        building a wider shopping destination with room to
+                        grow.
+                    </p>
+
+                    <p>
+                        Our aim is simple: create a place that feels familiar,
+                        professional and enjoyable every time you visit.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <h3>Wayco at a glance</h3>
+
+                    <ul class="about-list">
+
+                        <li>
+                            <span>Platform</span>
+                            <strong>Roblox</strong>
+                        </li>
+
+                        <li>
+                            <span>Industry</span>
+                            <strong>Retail & Shopping</strong>
+                        </li>
+
+                        <li>
+                            <span>Location</span>
+                            <strong>Derby</strong>
+                        </li>
+
+                        <li>
+                            <span>Expansion</span>
+                            <strong>More locations planned</strong>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STORES -->
+
+    <section class="stores" id="stores">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <small>Our Locations</small>
+
+                <h2>Discover Wayco.</h2>
+
+                <p>
+                    Explore our current locations and keep an eye out for
+                    new stores and destinations as Wayco continues to grow.
+                </p>
+
+            </div>
+
+
+            <div class="store-grid">
+
+                <div class="store-card">
+
+                    <div class="store-icon">D</div>
+
+                    <h3>Derby</h3>
+
+                    <p>
+                        Our first Wayco Shopping location, bringing the
+                        shopping experience to Derby on Roblox.
+                    </p>
+
+                    <span class="status">OPEN</span>
+
+                </div>
+
+
+                <div class="store-card">
+
+                    <div class="store-icon">+</div>
+
+                    <h3>More locations</h3>
+
+                    <p>
+                        We're working towards bringing Wayco to more
+                        locations and creating new experiences.
+                    </p>
+
+                    <span class="status planned">COMING SOON</span>
+
+                </div>
+
+
+                <div class="store-card">
+
+                    <div class="store-icon">W</div>
+
+                    <h3>Wayco Shopping</h3>
+
+                    <p>
+                        Our wider shopping brand will continue to expand
+                        with new stores, services and experiences.
+                    </p>
+
+                    <span class="status planned">EXPANDING</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+
+    <section class="values" id="values">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <small>What We Stand For</small>
+
+                <h2>Built around the experience.</h2>
+
+                <p>
+                    Everything we do at Wayco is focused on creating a
+                    better experience for our visitors and staff.
+                </p>
+
+            </div>
+
+
+            <div class="value-grid">
+
+                <div class="value-card">
+
+                    <h3>Quality</h3>
+
+                    <p>
+                        We aim to create detailed environments and
+                        experiences that feel polished and enjoyable.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <h3>Community</h3>
+
+                    <p>
+                        Wayco is built around bringing players together,
+                        whether they're visiting with friends or working
+                        as part of our team.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <h3>Growth</h3>
+
+                    <p>
+                        We're always looking for new ways to improve,
+                        expand and create something better than before.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta" id="contact">
+
+        <div class="container">
+
+            <h2>Ready to visit Wayco?</h2>
+
+            <p>
+                Come and experience Wayco Shopping on Roblox.
+                Our journey is only just beginning.
+            </p>
+
+            <a
+                href="https://www.roblox.com/"
+                target="_blank"
+                class="button button-primary"
+            >
+                Visit us on Roblox
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+
+                <div class="logo">
+                    <div class="logo-mark">W</div>
+                    <span>Wayco</span>
+                </div>
+
+                <p>
+                    Wayco Shopping is a Roblox shopping brand creating
+                    modern stores, destinations and experiences for
+                    players.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>Explore</h4>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#stores">Stores</a></li>
+                    <li><a href="#values">Our Values</a></li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4>Wayco</h4>
+
+                <ul>
+                    <li><a href="#stores">Locations</a></li>
+                    <li><a href="#contact">Visit Us</a></li>
+                    <li><a href="#">Staff</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="year"></span> Wayco Shopping. All rights reserved.
+            </span>
+
+            <span>
+                A Roblox community project.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // Automatically update the copyright year
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // Mobile navigation
+
+        function toggleMenu() {
+            document
+                .getElementById("navLinks")
+                .classList.toggle("active");
+        }
+
+
+        function closeMenu() {
+            document
+                .getElementById("navLinks")
+                .classList.remove("active");
+        }
+
+
+        // Close mobile menu when clicking outside
+
+        document.addEventListener("click", function(event) {
+
+            const nav = document.querySelector("nav");
+            const menu = document.getElementById("navLinks");
+            const button = document.querySelector(".menu-button");
+
+            if (
+                !nav.contains(event.target) &&
+                menu.classList.contains("active")
+            ) {
+                menu.classList.remove("active");
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
